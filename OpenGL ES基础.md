@@ -31,7 +31,7 @@ EGL的核心在于几个EGL接口，其调用有默认的顺序，即为EGL绘�
 
 5. eglCreateWindowSurface/eglCreatePbufferSurface：eglCreateWindowSurface生成的Surface可用于在终端屏幕上显示，而eglCreatePbufferSurface生成的则是“离屏”渲染区。
 
-6. eglMakeCurrent
+6. eglMakeCurrent：一个进程可能有多个Context，必须选择其中一个作为当前处理对象。该函数传入了两个EGLSurface，这两个都会被设置为当前Surface，所以我们一般都把这两个参数设为同一个Surface。
 
 7. glxxxx
 
@@ -44,5 +44,3 @@ EGL的核心在于几个EGL接口，其调用有默认的顺序，即为EGL绘�
 11. eglDestroyContext
 
 12. eglTerminate
-
-eglMakeCurrent：一个进程可能有多个Context，必须选择其中一个作为当前处理对象。该函数传入了两个EGLSurface，这两个都会被设置为当前Surface，所以我们一般都把这两个参数设为同一个Surface。
