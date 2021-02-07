@@ -36,14 +36,24 @@ Android图形数据流的大致流程如下，左侧的对象是生成图形缓�
 
 ##### BufferQueue
 
-调解缓冲区从生产方到消耗方的固定周期。
+一个缓冲队列，连接了图像流的生产方和消费方，用于调解缓冲区从生产方到消耗方的固定周期。一旦生产方移交其缓冲区，SurfaceFlinger便会负责将所有内容合成到显示器上。
 
-### 架构
+### 2. 架构
+
+Android系统级图形架构的基本要素主要包括以下几个核心部分：
 
 #### 2.1 低级别组件
 
 - BufferQueue和Gralloc
+
 - SurfaceFlinger、Hardware Composer和虚拟显示屏
+
+  SurfaceFlinger可接收多个来源的数据缓冲区，将它们合成并发送到显示屏。
+
+  Hardware Composer Hal（HWC）可确定使用可用硬件合成缓冲区的最有效的方法。
+
+  虚拟显示屏使合成输出可在系统内使用。
+
 - Surface、Canvas和SurfaceHolder
 - EGLSurface和OpenGL ES
 - Vulkan
